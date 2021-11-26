@@ -6,50 +6,47 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
     <EditText
-        android:inputType="textEmailAddress"
-        android:hint="email"
+        android:id="@+id/name_register"
+        android:hint="Name"
         android:ems="10"
-        android:id="@+id/id_email"
-        android:layout_marginEnd="60dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content"/>
 
     <EditText
-        android:inputType="textPassword"
+        android:id="@+id/email_register"
+        android:hint="Email"
+        android:ems="10"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/password_register"
+        android:ems="10"
         android:hint="Password"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
-        android:ems="10"
-        android:id="@+id/id_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         />
+        android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/id_login"
+        android:id="@+id/button_register"
         android:backgroundTint="#DAD5D5"
-        android:text="LOGIN"
+        android:text="REGISTER"
         android:textColor="@color/black"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginStart="155dp"
+        android:layout_marginEnd="140dp"
+        android:layout_marginStart="140dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/button_login"
-        android:text="Don't Have Account? \n Register Now"
-        android:clickable="true"
-        android:textColor="#2196F3"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
 </LinearLayout>
