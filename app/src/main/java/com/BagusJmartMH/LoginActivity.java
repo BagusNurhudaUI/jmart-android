@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.google.gson.Gson;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.BagusJmartMH.model.Account;
@@ -39,8 +39,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         editEmail = findViewById(R.id.id_email);
         editPassword = findViewById(R.id.id_password);
-        buttonLogin = findViewById(R.id.id_login);
-        buttonRegister = findViewById(R.id.button_register);
+        buttonLogin = findViewById(R.id.button_login);
+        buttonRegister = findViewById(R.id.button_register_login);
 
         buttonLogin.setOnClickListener(this);
         buttonRegister.setOnClickListener(this);
@@ -48,14 +48,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.id_login){
+        if(v.getId()==R.id.button_login){
             String dataEmail = editEmail.getText().toString().trim();
             String dataPassword = editPassword.getText().toString().trim();
             LoginRequest loginRequest = new LoginRequest(dataEmail, dataPassword, this, this);
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(loginRequest);
         }
-        else if(v.getId()==R.id.button_register){
+        else if(v.getId()==R.id.button_register_login){
             Intent moveIntent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(moveIntent);
         }
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Intent moveIntent = new Intent(LoginActivity.this, MainActivity.class);
         try{
             JSONObject jsonObject = new JSONObject(response);
-            moveIntent.putExtra("id", jsonObject.getInt("id"));
+            loggedAccount = gson.fromJson(jsonObject.toString(), Account.class);
         }catch (Exception e){
             Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
             return;
@@ -78,9 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
-    }
-
-    private static class Gson {
+        error.printStackTrace();
+        Toast.makeText(this, "Login Failed Connection", Toast.LENGTH_LONG).show();
     }
 }

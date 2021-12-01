@@ -3,6 +3,7 @@ package com.BagusJmartMH;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,12 +35,15 @@ public class RegisterActivity extends AppCompatActivity {
                 Response.Listener<String> listener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try {
+                            Log.d("bagus", "masuk ke try");
                             JSONObject object = new JSONObject(response);
                             if(object != null){
                                 Toast.makeText(RegisterActivity.this, "Register Successfully", Toast.LENGTH_SHORT).show();
                             }
                         }catch (JSONException e) {
+                            Log.d("bagus", "masuk ke catch");
                             e.printStackTrace();
                             Toast.makeText(RegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
                         }
@@ -48,7 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
                 Response.ErrorListener errorListener = new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterActivity.this, "Register Failed", Toast.LENGTH_SHORT).show();
+                        Log.d("bagus", "masuk ke errorres");
+                        Toast.makeText(RegisterActivity.this, "Register Failed Bro", Toast.LENGTH_SHORT).show();
                     }
                 };
                 String name = edtNameRegister.getText().toString();

@@ -33,7 +33,7 @@
          />
 
     <Button
-        android:id="@+id/id_login"
+        android:id="@+id/button_login"
         android:backgroundTint="#DAD5D5"
         android:text="LOGIN"
         android:textColor="@color/black"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/button_login"
+        android:id="@+id/button_register_login"
         android:text="Don't Have Account? \n Register Now"
         android:clickable="true"
         android:textColor="#2196F3"
