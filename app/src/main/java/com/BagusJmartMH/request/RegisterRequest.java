@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 public class RegisterRequest extends StringRequest{
-    private static final String URL = "http://10.0.2.2:8084/account/register";
+    private static final String URL = "http://192.168.1.12:8084/account/register";
     private final Map<String,String> params;
 
     public RegisterRequest(String name,

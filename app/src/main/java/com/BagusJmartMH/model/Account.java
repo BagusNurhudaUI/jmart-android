@@ -5,5 +5,5 @@ public class Account extends Serializable{
     public String email;
     public String name;
     public String password;
-    public String store;
+    public Store store;
 }
