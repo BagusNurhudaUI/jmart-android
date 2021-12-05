@@ -137,6 +137,11 @@ public class AboutMeActivity extends AppCompatActivity {
                                 Toast.makeText(AboutMeActivity.this, "Register Store Sukses", Toast.LENGTH_SHORT).show();
                                 l2.setVisibility(v.GONE);
                                 l3.setVisibility(v.VISIBLE);
+                                account=gson.fromJson(response, Account.class);
+                                tvHasilName.setText(account.store.name);
+                                tvHasilAddress.setText(account.store.address);
+                                tvHasilPhone.setText(account.store.phoneNumber);
+
                             }
                         }catch (JSONException e) {
                             e.printStackTrace();

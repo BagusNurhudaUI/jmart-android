@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FilterRequest extends StringRequest {
-    private static final String URL_FORMAT = "http://192.168.1.12:8084/product/getFiltered?page=%s&pageSize=%s&accountId=%s&search=%s&minPrice=%s&maxPrice=%s&category=%s";
+    private static final String URL_FORMAT = "http://10.0.2.2:8084/product/getFiltered?page=%s&pageSize=%s&accountId=%s&search=%s&minPrice=%s&maxPrice=%s&category=%s";
     private final Map<String, String> params;
 
     public FilterRequest(int page, int pageSize, int accountId, String search, int minPrice, int maxPrice, ProductCategory category, Response.Listener<String> listener, Response.ErrorListener errorListener) {

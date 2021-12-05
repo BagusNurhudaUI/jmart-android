@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterStoreRequest extends StringRequest {
-    private static final String URL = "http://192.168.1.12:8084/account/%d/registerStore";
+    private static final String URL = "http://10.0.2.2:8084/account/%d/registerStore";
     private final Map<String, String> params;
 
     public RegisterStoreRequest(int id, String StoreName, String StoreAddress, String StorePhone, Response.Listener<String> listener, Response.ErrorListener errorListener){
