@@ -2,6 +2,7 @@ package com.BagusJmartMH;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -40,40 +41,40 @@ public class CreateProductActivity extends AppCompatActivity {
     private RadioButton conditionProduct2;
     private boolean valueCondition;
     private Button createProduct;
+    private Button btnCancel;
     private Account account;
     private Product product;
     private static final Gson gson = new Gson();
 
+    /**
+     * merupoakan activity untuk membuat product
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_product);
         nameProduct = findViewById(R.id.id_name_create_product);
-        weightProduct = findViewById(R.id.id_weight_creaate_product);
+        weightProduct = findViewById(R.id.id_weight_create_product);
         priceProduct = findViewById(R.id.id_price_create_product);
         discountProduct = findViewById(R.id.id_discount_create_product);
         conditionProduct = findViewById(R.id.id_radiobtn_condition_create_product);
         conditionProduct2 = findViewById(R.id.id_radiobtn_condition_create_product_used);
         createProduct = findViewById(R.id.id_create_product);
-
+        btnCancel = findViewById(R.id.id_cancel_product);
         categoryPlan = findViewById(R.id.id_spinner_category);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.category, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categoryPlan.setAdapter(adapter1);
-
         ShipmentPlan = findViewById(R.id.id_spinner_shipmentplans);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.shipmentPlans, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ShipmentPlan.setAdapter(adapter2);
 
-//        if (conditionProduct.isChecked()){
-//            valueCondition = true;
-//        }
-//        else if (conditionProduct2.isChecked()){
-//            valueCondition = false;
-//        }
 
-
+        /**
+         * akan memproses ketika membuat produk baru
+         */
         createProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,8 @@ public class CreateProductActivity extends AppCompatActivity {
                             if(object != null){
                                 product = gson.fromJson(response, Product.class);
                                 Toast.makeText(CreateProductActivity.this, "Create Product Sukses", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CreateProductActivity.this, MainActivity.class);
+                                startActivity(intent);      //kembali ke MainActivity setelah berhasil membuat Product
                             }
                         }catch (JSONException e) {
                             e.printStackTrace();
@@ -134,8 +137,26 @@ public class CreateProductActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * proses ketika buttal cancel saat membuat produk di klik
+         */
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CreateProductActivity.this,MainActivity.class);
+                Toast.makeText(getApplicationContext(), "Create Product is Cancel", Toast.LENGTH_SHORT).show();
+                startActivity(i);
+            }
+        });
     }
 
+
+    /**
+     * merupakan function untuk mendapatkan data dari radio button
+     * @param conditionProduct sebagai new used
+     * @param conditionProduct2 sebagai used
+     * @return
+     */
     public boolean checkConditionRadioButton(RadioButton conditionProduct, RadioButton conditionProduct2 ){
         boolean i = false;
         if(conditionProduct.isChecked()){

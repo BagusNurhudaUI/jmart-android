@@ -4,49 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/gradient_background">
 
-    <EditText
-        android:id="@+id/name_register"
-        android:hint="Name"
-        android:ems="10"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/email_register"
-        android:hint="Email"
-        android:ems="10"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <EditText
-        android:id="@+id/password_register"
-        android:ems="10"
-        android:hint="Password"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/button_register"
-        android:backgroundTint="#DAD5D5"
-        android:text="REGISTER"
-        android:textColor="@color/black"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginStart="140dp"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"/>
+        android:src="@drawable/jmart_back"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:text="You can Register Account here :"/>
+        <EditText
+            android:id="@+id/name_register"
+            android:hint="Name"
+            android:ems="10"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/email_register"
+            android:hint="Email"
+            android:ems="10"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/password_register"
+            android:ems="10"
+            android:hint="Password"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/button_register"
+            android:backgroundTint="#15BCCF"
+            android:text="REGISTER"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
 </LinearLayout>

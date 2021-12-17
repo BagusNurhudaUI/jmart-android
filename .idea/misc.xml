@@ -3,14 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/drawable/background_biru.xml" value="0.2989583333333333" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/drawable/gradient_background.xml" value="0.2989583333333333" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/drawable/invoice.xml" value="0.2989583333333333" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/drawable/shape.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/drawable/shape_create_prod.xml" value="0.4036458333333333" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/drawable/shape_stroke.xml" value="0.4036458333333333" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_about_me.xml" value="0.264" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_create_product.xml" value="0.264" />
-        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_login.xml" value="0.176" />
-        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_main.xml" value="0.23020833333333332" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_invoice.xml" value="0.264" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/detail_product.xml" value="0.4" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/fragment_filter.xml" value="0.2833333333333333" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/fragment_products.xml" value="0.2833333333333333" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/input_resi.xml" value="0.4" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/invoice_adapt.xml" value="0.3875" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/invoice_adapt_acc.xml" value="0.264" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/invoice_adapt_store.xml" value="0.4" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/invoice_cv.xml" value="0.19635416666666666" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/layoutitemproduct.xml" value="0.2203125" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/product_list.xml" value="0.3875" />
+        <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/layout/testlayout.xml" value="0.2828125" />
         <entry key="..\:/Users/bagus/Desktop/jmartandroid/app/src/main/res/menu/jmart_android_menu.xml" value="0.2203125" />
       </map>
     </option>

@@ -19,6 +19,10 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+/**
+ * class yang digunakan untuk menampilkan tampilan login
+ * tampilan ini merupakan tampilan awal dari aplikasi
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, Response.Listener<String>, Response.ErrorListener {
 
     private static final Gson gson = new Gson();
@@ -32,6 +36,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return loggedAccount;
     }
 
+    /**
+     *
+     * @param savedInstanceState menyimpan state sebelumnya
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +54,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         buttonRegister.setOnClickListener(this);
     }
 
+    /**
+     * merupakan if condition untuk login atau register
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.button_login){
@@ -62,6 +74,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    /**
+     * digunakan untuk mennyimpan account yang berhasil login
+     * akan melanjutkan ke main activity setelah login
+     * @param response untuk mendapatkan response dari login
+     */
     @Override
     public void onResponse(String response) {
         Intent moveIntent = new Intent(LoginActivity.this, MainActivity.class);
@@ -76,6 +93,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         startActivity(moveIntent);
     }
 
+    /**
+     * digunakan untuk menangkap error pada saat login
+     * @param error untuk menangkap error
+     */
     @Override
     public void onErrorResponse(VolleyError error) {
         error.printStackTrace();

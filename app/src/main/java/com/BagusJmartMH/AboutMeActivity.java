@@ -2,6 +2,7 @@ package com.BagusJmartMH;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BagusJmartMH.model.Account;
+import com.BagusJmartMH.model.Store;
 import com.BagusJmartMH.request.RegisterStoreRequest;
 import com.BagusJmartMH.request.RequestFactory;
 import com.BagusJmartMH.request.TopupRequest;
@@ -24,15 +26,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AboutMeActivity extends AppCompatActivity {
-    private Button b1;
-    private LinearLayout l2;
-    private LinearLayout l3;
-    private Button b2;
-    private Button b3;
-    private EditText edttopup;
+    private Button btnRegist;
+    private LinearLayout formRegist;
+    private LinearLayout hasilStore;
+    private EditText edittopup;
     private Button btntopup;
-    private Button btnRegisterStore;
-    private Button btnCancelStore;
+    private Button invoiceBtn;
+    private Button afterBtnRegisterStore;
+    private Button afterBtnCancelStore;
     private EditText NameStore;
     private EditText AddressStore;
     private EditText PhoneStore;
@@ -43,24 +44,28 @@ public class AboutMeActivity extends AppCompatActivity {
     private TextView tvHasilAddress;
     private TextView tvHasilPhone;
     private static final Gson gson = new Gson();
-
-
     private Account account;
 
+    /**
+     *
+     * @param savedInstanceState digunakan untuk mengambil  file xml yang ditautkan
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_me);
-        btnRegisterStore = findViewById(R.id.id_btn_register_store);
-        btnCancelStore = findViewById(R.id.id_btn_cancel_store);
+        //inisialisasi
+        invoiceBtn = findViewById(R.id.invoice);
+        afterBtnRegisterStore = findViewById(R.id.id_btn_register_store);
+        afterBtnCancelStore = findViewById(R.id.id_btn_cancel_store);
         NameStore = findViewById(R.id.name_register_store);
         AddressStore = findViewById(R.id.address_register_store);
         PhoneStore = findViewById(R.id.Phone_Number_register_store);
-        edttopup = findViewById(R.id.edt_topup);
+        edittopup = findViewById(R.id.edt_topup);
         btntopup = findViewById(R.id.btn_Topup_account_details);
-        b1 = findViewById(R.id.btn_register_store);
-        l2 = findViewById(R.id.id_form_register_store);
-        l3 = findViewById(R.id.hasil_register_store);
+        btnRegist = findViewById(R.id.btn_register_store);
+        formRegist = findViewById(R.id.id_form_register_store);
+        hasilStore = findViewById(R.id.hasil_register_store);
         tvName = findViewById(R.id.name_account_details);
         tvEmail = findViewById(R.id.email_account_details);
         tvBalance = findViewById(R.id.balance_account_details);
@@ -71,28 +76,40 @@ public class AboutMeActivity extends AppCompatActivity {
         tvName.setText(account.name);
         tvEmail.setText(account.email);
         tvBalance.setText("" + account.balance);
+
+        /**
+         * check account store sudah dibuat atau belum
+         * jika belum maka tidak akan menampilkan linear layout form register
+         */
         if (account.store != null){
-            b1.setVisibility(View.GONE);
-            l2.setVisibility(View.GONE);
-            l3.setVisibility(View.VISIBLE);
+            btnRegist.setVisibility(View.GONE);
+            formRegist.setVisibility(View.GONE);
+            hasilStore.setVisibility(View.VISIBLE);
             tvHasilName.setText(account.store.name);
             tvHasilAddress.setText(account.store.address);
             tvHasilPhone.setText(account.store.phoneNumber);
         }
         else {
-            b1.setVisibility(View.VISIBLE);
-            l2.setVisibility(View.GONE);
-            l3.setVisibility(View.GONE);
+            btnRegist.setVisibility(View.VISIBLE);
+            formRegist.setVisibility(View.GONE);
+            hasilStore.setVisibility(View.GONE);
         }
-        b1.setOnClickListener(new View.OnClickListener() {
+
+        /**
+         * digunakan untuk register store dan menampilkan form register
+         */
+        btnRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                b1.setVisibility(v.GONE);
-                l2.setVisibility(v.VISIBLE);
+                btnRegist.setVisibility(v.GONE);
+                formRegist.setVisibility(v.VISIBLE);
                 Toast.makeText(getApplicationContext(), "Register Store di click", Toast.LENGTH_SHORT).show();
             }
         });
 
+        /**
+         * digunakan untuk menambahkan balance
+         */
         btntopup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,7 +119,7 @@ public class AboutMeActivity extends AppCompatActivity {
                         Boolean object = Boolean.valueOf(response);
                         if(object){
                             refreshBalance();
-                            edttopup.getText().clear();
+                            edittopup.getText().clear();
                             Toast.makeText(AboutMeActivity.this, "Topup Berhasil", Toast.LENGTH_SHORT).show();
                         }
                         else {
@@ -118,14 +135,17 @@ public class AboutMeActivity extends AppCompatActivity {
                     }
                 };
                 account = LoginActivity.getLoggedAccount();
-                double balance = Double.valueOf(edttopup.getText().toString());
+                double balance = Double.valueOf(edittopup.getText().toString());
                 TopupRequest topupRequest = new TopupRequest(account.id, balance, listener, errorListener);
                 RequestQueue queue = Volley.newRequestQueue(AboutMeActivity.this);
                 queue.add(topupRequest);
             }
         });
 
-        btnRegisterStore.setOnClickListener(new View.OnClickListener() {
+        /**
+         * menampilkan form setelah button register di click
+         */
+        afterBtnRegisterStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Response.Listener<String> listener = new Response.Listener<String>() {
@@ -133,16 +153,16 @@ public class AboutMeActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject object = new JSONObject(response);
-                            if(object != null){
-                                Toast.makeText(AboutMeActivity.this, "Register Store Sukses", Toast.LENGTH_SHORT).show();
-                                l2.setVisibility(v.GONE);
-                                l3.setVisibility(v.VISIBLE);
-                                account=gson.fromJson(response, Account.class);
+                            if(object != null) {
+                                Toast.makeText(AboutMeActivity.this, "Register Store Berhasil", Toast.LENGTH_SHORT).show();
+                            }
+                                account.store = gson.fromJson(object.toString(), Store.class);
+                                formRegist.setVisibility(v.GONE);
+                                hasilStore.setVisibility(v.VISIBLE);
                                 tvHasilName.setText(account.store.name);
                                 tvHasilAddress.setText(account.store.address);
                                 tvHasilPhone.setText(account.store.phoneNumber);
 
-                            }
                         }catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(AboutMeActivity.this, "Register Store Gagal", Toast.LENGTH_SHORT).show();
@@ -165,16 +185,43 @@ public class AboutMeActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * menampilkan proses ketika membatalkan untuk membuat store
+         */
+        afterBtnCancelStore.setOnClickListener(new View.OnClickListener() {       //event handler untuk tombol cancel pada cardview yang muncul setelah tombol registerStore ditekan
+            @Override
+            public void onClick(View view) {
+                hasilStore.setVisibility(View.GONE);
+                btnRegist.setVisibility(View.VISIBLE);
+            }
+        });
+
+        /**
+         * digunakan untuk menampilkan invoice setelah button di click
+         */
+        invoiceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent moveIntent = new Intent(AboutMeActivity.this, InvoiceActivity.class);
+                Toast.makeText(getApplicationContext(), "Invoice Button clicked", Toast.LENGTH_SHORT).show();
+                startActivity(moveIntent);
+            }
+        });
     }
 
+
+    /**
+     * digunakan untuk memperbarui balance yang telah diubah atau ditambahkan
+     */
+
     public void refreshBalance(){
-        Response.Listener<String> listener = new Response.Listener<String>() {
+        Response.Listener<String> listener = new Response.Listener<String>() {      //listener untuk mengambil request
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject object = new JSONObject(response);
                     account = gson.fromJson(response, Account.class);
-                    tvBalance.setText("" + account.balance);
+                    tvBalance.setText("Rp " + account.balance);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -189,5 +236,15 @@ public class AboutMeActivity extends AppCompatActivity {
         };
         RequestQueue queue = Volley.newRequestQueue(AboutMeActivity.this);
         queue.add(RequestFactory.getById("account", account.id, listener, errorListener));
+
+    }
+
+    /**
+     * method untuk memanggil function refresh balance secara terus menerus
+     */
+    @Override
+    protected void onResume() {
+        refreshBalance();
+        super.onResume();
     }
 }

@@ -9,21 +9,22 @@
 
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tablayout"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:background="@drawable/background_biru"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PRODUCTS"/>
+            android:text="PRODUCTS" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FILTER"/>
+            android:text="FILTER" />
 
     </com.google.android.material.tabs.TabLayout>
 
@@ -39,10 +40,10 @@
             android:visibility="visible">
 
             <LinearLayout
-                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".ProductsFragment"
+                android:background="@drawable/gradient_background"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -53,27 +54,33 @@
 
                     <Button
                         android:id="@+id/prev_button"
+                        android:backgroundTint="#15BCCF"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:text="@string/prev"
                         android:layout_weight="2"
                         android:layout_margin="5dp"/>
+
                     <Button
                         android:id="@+id/next_button"
+                        android:backgroundTint="#15BCCF"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/next"
                         android:layout_margin="5dp"
-                        android:layout_weight="2"/>
+                        android:layout_weight="2"
+                        android:text="@string/next" />
+
                     <EditText
                         android:id="@+id/edt_filter_product"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         tools:hint="3"
+                        android:gravity="center"
                         android:layout_weight="2"
                         android:layout_margin="5dp"/>
                     <Button
                         android:id="@+id/go_button"
+                        android:backgroundTint="#15BCCF"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:text="@string/go"
@@ -85,8 +92,9 @@
                 <ListView
                     android:id="@+id/list_product"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp">
                 </ListView>
 
             </LinearLayout>
@@ -99,43 +107,59 @@
             android:visibility="gone">
 
             <LinearLayout
-                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@drawable/gradient_background"
                 tools:context=".FilterFragment">
 
-                <!-- TODO: Update blank fragment layout -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/name"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"/>
-
-                <EditText
-                    android:id="@+id/id_filter_name"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:hint="Name"/>
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"/>
+
+                    <EditText
+                        android:id="@+id/id_filter_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Name"/>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:weightSum="8">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginLeft="15dp"
                         android:layout_weight="3">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:textColor="@color/black"
                             android:text="@string/lowest_price"/>
 
                         <EditText
@@ -156,12 +180,12 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
                         android:orientation="vertical"
                         android:layout_weight="3">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/black"
                             android:text="@string/highest_price"/>
 
                         <EditText
@@ -175,54 +199,74 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:gravity="center"
                     android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:weightSum="5">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/product_condition"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_weight="3"/>
+                        android:layout_weight="3"
+                        android:textColor="@color/black"
+                        android:text="@string/product_condition" />
 
                     <CheckBox
                         android:id="@+id/id_checkbox_new"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/newbox"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:text="@string/newbox" />
 
                     <CheckBox
                         android:id="@+id/id_checkbox_used"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/usedbox"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:text="@string/usedbox" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:gravity="center"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/product_category"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_weight="3"/>
+                        android:layout_weight="3">
 
-                    <Spinner
-                        android:id="@+id/id_spinner_product_category"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/product_category"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="2"/>
+                        android:layout_weight="6">
+
+                        <Spinner
+                            android:id="@+id/id_spinner_product_category"
+                            android:layout_width="match_parent"
+                            android:popupBackground="@drawable/gradient_background"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
                 </LinearLayout>
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -235,6 +279,7 @@
                         android:id="@+id/id_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="#15BCCF"
                         android:text="@string/apply"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -248,6 +293,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/clear"
+                        android:backgroundTint="#15BCCF"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="15dp"
                         android:layout_marginBottom="5dp"/>

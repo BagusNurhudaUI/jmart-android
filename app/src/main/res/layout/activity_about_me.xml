@@ -4,19 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".AboutMeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
+
         android:elevation="10dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:gravity="left"
             android:text="@string/account_details"
             android:textSize="18sp" />
 
@@ -37,7 +42,7 @@
                 android:id="@+id/name_account_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="left"
                 android:layout_weight="3"
                 android:text="Bagus Name"
                 android:textStyle="bold"
@@ -61,7 +66,7 @@
                 android:id="@+id/email_account_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="left"
                 android:layout_weight="3"
                 android:text="bagus@gmail"
                 android:textStyle="bold"
@@ -73,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
-            android:weightSum="4">
+            android:weightSum="6">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,8 +90,8 @@
                 android:id="@+id/balance_account_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:layout_weight="3"
+                android:gravity="left"
+                android:layout_weight="5"
                 android:text="0.0"
                 android:textStyle="bold"
                 android:layout_marginEnd="15dp"/>
@@ -98,34 +103,57 @@
             android:layout_marginBottom="15dp"
             android:orientation="horizontal"
             android:weightSum="4">
+
             <EditText
                 android:id="@+id/edt_topup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_weight="3"
-                android:hint="@string/top_up_amount"
-                android:layout_marginStart="15dp"/>
+                android:hint="@string/top_up_amount" />
 
             <Button
                 android:id="@+id/btn_Topup_account_details"
+                android:backgroundTint="#15BCCF"
+                android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="@string/top_up"
+                android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"/>
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/top_up" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btn_register_store"
+            android:backgroundTint="#15BCCF"
+            android:textColor="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/register_store"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            android:visibility="visible"/>
+            android:text="@string/register_store"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/invoice"
+                android:backgroundTint="#15BCCF"
+                android:textColor="#FFFFFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/invoice"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/id_form_register_store"
@@ -138,9 +166,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/register_store"
                 android:textSize="15sp"
-                android:layout_marginStart="15dp"/>
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"/>
 
             <EditText
                 android:id="@+id/name_register_store"
@@ -198,61 +228,59 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="15dp"
-            >
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/store"
-                android:textSize="20sp"
-                android:layout_marginStart="15dp"/>
+                android:text="Store"
+                android:gravity="left"
+                android:textSize="20sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
-                android:weightSum="4">
+                android:weightSum="8">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:text="@string/name"/>
 
                 <TextView
                     android:id="@+id/name_store"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text=""
-                    android:gravity="right"
+                    android:layout_weight="5"
+                    android:text="Store name"
+                    android:gravity="left"
                     android:textStyle="bold"/>
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
-                android:weightSum="4">
+                android:weightSum="7">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:text="@string/address"/>
 
                 <TextView
                     android:id="@+id/address_store"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="5"
                     android:text="Jalan Margonda Depok"
-                    android:gravity="right"
+                    android:gravity="left"
                     android:textStyle="bold"/>
 
             </LinearLayout>
@@ -261,9 +289,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
-                android:weightSum="4">
+                android:weightSum="5">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -275,19 +302,15 @@
                     android:id="@+id/phone_store"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:text="087888254504"
-                    android:gravity="right"
+                    android:gravity="left"
                     android:textStyle="bold"/>
 
             </LinearLayout>
 
 
+
         </LinearLayout>
-
-
-
-
-
     </LinearLayout>
 </LinearLayout>

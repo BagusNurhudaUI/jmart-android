@@ -40,8 +40,8 @@
     <string name="top_up_amount">Top Up Amount</string>
     <string name="top_up">TOP UP</string>
     <string name="register_store">REGISTER STORE</string>
-    <string name="phone_number">phone_number</string>
-    <string name="address">address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
     <string name="store">store</string>
     <string name="cancel">cancel</string>
     <string name="register">register</string>
@@ -68,4 +68,18 @@
     <string name="search">search</string>
     <string name="addbox">addbox</string>
     <string name="person">person</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="buy_now">BUY NOW</string>
+    <string name="addressbuy">Input Address</string>
+    <string name="quantity">Input Quantity</string>
+    <string name="finalprice">Total Price</string>
+    <string name="invoice">Invoice</string>
+    <string name="id_order">Id Order</string>
+    <string name="status_ship">Status Shipment</string>
+    <string name="total_harga">Total Harga</string>
+    <string name="date_shipment">Date Shipment</string>
+    <string name="accept">Accept</string>
+    <string name="decline">DECLINE</string>
+    <string name="input_resi">Input Resi</string>
+    <string name="Submit">SUBMIT</string>
 </resources>
