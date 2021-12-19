@@ -1,5 +1,9 @@
 package com.BagusJmartMH.model;
 
+/**
+ * merupakan model yang digunakan utnuk melakukan inisialisai dalam class product
+ * terdapat funtion untuk mengembalikkan nilai parameter name, weight, dll
+ */
 public class Product extends Serializable{
     public int accountId;
     public double discount;

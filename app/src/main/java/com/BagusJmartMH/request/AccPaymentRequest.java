@@ -6,6 +6,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * request yang digunakan untuk menerima hasil order yang telah diorder
+ */
 public class AccPaymentRequest extends StringRequest {
     private static final String ACCEPT_URL = "http://10.0.2.2:8084/payment/%d/accept";
     private final Map<String, String> params;

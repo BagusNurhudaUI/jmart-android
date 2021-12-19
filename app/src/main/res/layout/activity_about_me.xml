@@ -137,23 +137,7 @@
             android:text="@string/register_store"
             android:visibility="visible" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/invoice"
-                android:backgroundTint="#15BCCF"
-                android:textColor="#FFFFFF"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/invoice"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/id_form_register_store"
@@ -161,7 +145,7 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="match_parent"
@@ -309,7 +293,23 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <Button
+                    android:id="@+id/invoice"
+                    android:backgroundTint="#15BCCF"
+                    android:textColor="#FFFFFF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/invoice"/>
+
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

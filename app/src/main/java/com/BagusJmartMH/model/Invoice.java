@@ -2,6 +2,9 @@ package com.BagusJmartMH.model;
 
 import java.util.Date;
 
+/**
+ * merupakan model untuk inisialisasi enum class Invoice
+ */
 public abstract class Invoice extends Serializable{
     public enum Status
     {

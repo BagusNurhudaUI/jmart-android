@@ -7,6 +7,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * request yang digunakan utnuk men-submit payment dari order
+ */
 public class SubmitPaymentRequest extends StringRequest {
     private static final String SUBMIT_URL = "http://10.0.2.2:8084/payment/%d/submit";
     private final Map<String, String> params;

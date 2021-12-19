@@ -35,6 +35,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * merupakan function untuk adapter dari tablayout store di invoice activity
+ */
 public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.CardViewStoreHolder> {
     private ArrayList<Payment> listP = new ArrayList<>();
     private Product product;
@@ -43,10 +46,14 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
     Payment.Record lastRec;
     Dialog dialog;
 
+
     public InvoiceStoreAdapt(ArrayList<Payment> list) {
         this.listP = list;
     }
 
+    /**
+     * mengambil informasi cardview dari xml khusus untuk invoice adaptor
+     */
     @NonNull
     @Override
     public InvoiceStoreAdapt.CardViewStoreHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,6 +61,9 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
         return new CardViewStoreHolder(view);
     }
 
+    /**
+     * merupakan function untuk inisialisasi model pada cardview
+     */
     public class CardViewStoreHolder extends RecyclerView.ViewHolder {
         TextView ISName, ISStatus, ISDate, ISAddress, ISHarga, ISOrderId;
         Button acceptBtn, declineBtn, receiptBtn;
@@ -73,6 +83,11 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
         }
     }
 
+    /**
+     * merupakan function untuk inisialisasi model pada cardview
+     * @param holder merupakan parameter yang digunakan
+     * @param position posisi untuk menampilkan cardview lainnya
+     */
     @Override
     public void onBindViewHolder(@NonNull CardViewStoreHolder holder, int position) {
         Payment payment = listP.get(position);
@@ -95,7 +110,10 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
             holder.receiptBtn.setVisibility(View.GONE);
         }
 
-
+        /**
+         * click listener untuk mengambil data dari accept button
+         * jika diterima, maka akan mensubmit payment yang berhasil
+         */
         holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +124,7 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
                         if (isAccepted) {
                             Toast.makeText(holder.ISName.getContext(), "Payment telah diterima!", Toast.LENGTH_SHORT).show();
                             payment.history.add(new Payment.Record(Invoice.Status.ON_PROGRESS, "Payment Accepted!"));
+                            payment.history.add(new Payment.Record(Invoice.Status.ON_DELIVERY,"Payment Submited"));
                             lastRec = payment.history.get(payment.history.size() - 1);
                             holder.ISStatus.setText(lastRec.status.toString());
                             holder.storeDeclineAcc.setVisibility(View.GONE);
@@ -128,6 +147,10 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
             }
         });
 
+        /**
+         * click listener untuk mengambil data dari decline button
+         * jika di klik akan mendecline order dan akan mengmbalikkan balance
+         */
         holder.declineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,6 +203,10 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
             }
         });
 
+        /**
+         * digunakan untuk mengambil data dari receipt button
+         * akan mengisi nomor resi pada payment
+         */
         holder.receiptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -226,11 +253,20 @@ public class InvoiceStoreAdapt extends RecyclerView.Adapter<InvoiceStoreAdapt.Ca
 
     }
 
+    /**
+     * mengambil data list dari item
+     * @return size dari list
+     */
     @Override
     public int getItemCount() {
         return listP.size();
     }
 
+    /**
+     * function untuk membuat data payment dan setText
+     * @param holder untuk membuat data yang telah di inisialisasi
+     * @param payment paramteer yang diambil dari model Payment
+     */
     public void getProductData(InvoiceStoreAdapt.CardViewStoreHolder holder, Payment payment) {
         Response.Listener<String> ListenerProduct = new Response.Listener<String>() {
             @Override

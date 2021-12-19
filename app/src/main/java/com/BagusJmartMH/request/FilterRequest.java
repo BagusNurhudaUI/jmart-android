@@ -7,6 +7,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * untuk mendapatkan request filter dari json product dengan mengambil beberapa parameter yang digunakan pada tiap functionnya
+ */
 public class FilterRequest extends StringRequest {
     private static final String URL_FORMAT = "http://10.0.2.2:8084/product/getFiltered?page=%s&pageSize=%s&accountId=%s&search=%s&minPrice=%s&maxPrice=%s&category=%s";
     private final Map<String, String> params;

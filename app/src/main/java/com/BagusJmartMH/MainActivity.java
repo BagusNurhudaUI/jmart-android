@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     double discount ;
     public static Account account = LoginActivity.getLoggedAccount();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         /**
-         *
+         *membuat dialog untuk detail product yang akan ditampilkan
          */
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -127,6 +128,9 @@ public class MainActivity extends AppCompatActivity {
                 dialog.setContentView(R.layout.detail_product);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
+                /**
+                 * inisialisasi id
+                 */
                 final TextView productdetailsName = dialog.findViewById(R.id.nama_produk);
                 final TextView productdetailsWeight = dialog.findViewById(R.id.weight_dp);
                 final TextView productdetailsPrice = dialog.findViewById(R.id.price_dp);
@@ -153,7 +157,9 @@ public class MainActivity extends AppCompatActivity {
                 belibtn = dialog.findViewById(R.id.beli_btn);
                 Product product = PList.get(position);
 
-                //Button Buy Now pada product detail4/product/page?page=0&pageSize=5
+                /**
+                 * click listener yang untuk mengganti tampilan ke pembelian.xml
+                 */
                 buynowbtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -163,7 +169,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                //Cancel button di click
+                /**
+                 * click listener yang untuk mengganti tampilan ke detailproduct
+                 */
                 cancelbelibtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -173,12 +181,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                /**
+                 * untuk menampilkan data didalam detail product
+                 */
                 productdetailsQuantity.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
                     }
-
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
                         if (productdetailsQuantity.getText().toString().equals("")) {
@@ -194,11 +203,12 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void afterTextChanged(Editable s) {
-
                     }
                 });
 
-
+                /**
+                 * untuk mengatur shipment plan dari detail product
+                 */
                 String ShipmentPlans = "REGULER";
                 if (product.shipmentPlans == 1) {
                     ShipmentPlans = "INSTANT";
@@ -212,12 +222,19 @@ public class MainActivity extends AppCompatActivity {
                     ShipmentPlans = "KARGO";
                 }
 
+                /**
+                 * untuk mengatur condition pada detail product
+                 */
                 String condition;
                 if (product.conditionUsed) { //kondisi true
                     condition = "NEW";
                 } else {
                     condition = "USED";
                 }
+
+                /**
+                 * untuk mengatur set text pada setial id dan bagian pada detail product
+                 */
                 productdetailsTotalPrice.setText("Rp. " + product.price);
                 productdetailsName.setText(product.name);
                 productdetailsWeight.setText(product.weight + " Kg");
@@ -238,7 +255,9 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog.show();
 
-                //Cancel button di click dialog kedua
+                /**
+                 * dialog untuk memproses tombol beli kedua
+                 */
                 belibtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -294,10 +313,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
+        /**
+         * untuk mengatur tab layout saat mengganti product dan filter
+         */
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -319,17 +337,20 @@ public class MainActivity extends AppCompatActivity {
             public void onTabUnselected(TabLayout.Tab tab) {
 
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });
 
-
+        /**
+         * untuk mengatur product list page size
+         */
         GetshowProductList(page, 2);
 
-
+        /**
+         * untuk mengatur lompat halaman pada tab product
+         */
         gobtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -343,7 +364,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        /**
+         * untuk kembali pada halaman (page) sebelumnya
+         */
         prevbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -360,6 +383,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * digunakan untuk menampilkan halaman berikutnya
+         */
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -372,7 +398,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        /**
+         * untuk meng-apply dari hasil filter yang sudah dibuat
+         */
         apllybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -383,6 +411,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * untuk menghapus filter yang sudah diterapkan
+         */
         clearbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -395,7 +426,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * menampilkan product list tanpa menggunakan filter
+     * @param lastPage yaitu page pada kondisi terkini
+     * @param pageSize yaitu banyaknya product yang ditampilkan dalam satu halaman
+     */
     public void GetshowProductList(int lastPage, int pageSize) {
         Response.Listener<String> stringListener = new Response.Listener<String>() {
             @Override
@@ -434,6 +469,11 @@ public class MainActivity extends AppCompatActivity {
         queue.add(RequestFactory.getPage("product", lastPage, pageSize, stringListener, errorListener));
     }
 
+    /**
+     * akan menampilkan hasil product yang telah difilter
+     * @param Lastpage yaitu halam terkini
+     * @param pageSize yaitu jumlah product yang dimuat dalam satu halaman
+     */
     public void GetShowFilterProductList(int Lastpage, int pageSize) {
         String filteredname = filterName.getText().toString();
         int minP;
@@ -468,8 +508,8 @@ public class MainActivity extends AppCompatActivity {
                     }.getType();
                     PList = gson.fromJson(response, PListType);
                     if (PList.isEmpty()) {
-//                        Toast.makeText(MainActivity.this, "Error! TIdak ada produk pada halaman ini", Toast.LENGTH_SHORT).show();
-//                        page--;
+                        Toast.makeText(MainActivity.this, "Error! TIdak ada produk pada halaman ini", Toast.LENGTH_SHORT).show();
+                        page--;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -503,7 +543,9 @@ public class MainActivity extends AppCompatActivity {
         queue.add(filterRequest);
     }
 
-
+    /**
+     * untuk menampilkan list product dalam bentuk listview dari layout yang telah dibuat
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -515,7 +557,11 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-
+    /**
+     * untuk membuat product
+     * @param menu
+     * @return menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.jmart_android_menu, menu);
@@ -528,12 +574,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         setMode(item.getItemId());
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * membuat beberapa icon box pada toolbar
+     * @param selectedMode yaitu icon yang diclick
+     */
     public void setMode(int selectedMode) {
         switch (selectedMode) {
             case R.id.search:
@@ -565,7 +620,9 @@ public class MainActivity extends AppCompatActivity {
         return category;
     }
 
-    //mengambil balance ketika sudah membayar
+    /**
+     * untuk mereferesh balance
+     */
     public void refreshBalance() {
         //Ketika menerima response
         Response.Listener<String> listener = new Response.Listener<String>() {

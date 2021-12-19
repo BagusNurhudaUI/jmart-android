@@ -6,6 +6,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * digunakan untuk mendapatkan request payment
+ */
 public class DeclinePaymentRequest extends StringRequest {
     public static final String CANCEL_URL = "http://10.0.2.2:8084/payment/%d/cancel";
     private final Map<String, String> params;

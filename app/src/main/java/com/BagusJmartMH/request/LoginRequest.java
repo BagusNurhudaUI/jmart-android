@@ -6,11 +6,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
+/**
+ * untuk melakukan request login
+ * @param <listener> untuk mendapatkan hasil listener
+ */
 public class LoginRequest<listener> extends StringRequest{
     private static final String URL = "http://10.0.2.2:8084/account/login";
     private final Map<String,String> params;
 
+    /**
+     * merupakan login request
+     * @param email
+     * @param password
+     * @param listener
+     * @param errorListener
+     */
     public LoginRequest( String email,String password,
                         Response.Listener<String> listener,
                         Response.ErrorListener errorListener){

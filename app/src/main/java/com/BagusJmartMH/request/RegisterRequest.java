@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+/**
+ * merupakan request yang digunakan utnuk regist account
+ */
 public class RegisterRequest extends StringRequest{
     private static final String URL = "http://10.0.2.2:8084/account/register";
     private final Map<String,String> params;

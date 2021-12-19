@@ -4,6 +4,9 @@ import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * merupakan class model untuk inisialisasi class record
+ */
 public class Payment extends Invoice{
     public ArrayList<Record> history = new ArrayList<>();
     public int productCount;

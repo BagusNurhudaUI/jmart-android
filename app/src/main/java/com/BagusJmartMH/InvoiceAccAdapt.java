@@ -23,6 +23,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+    /**
+     * merupakan class adapter untuk menjalankan tab layout account pada activity invoice
+     */
 public class InvoiceAccAdapt extends RecyclerView.Adapter<InvoiceAccAdapt.CardViewHolder> {
     private ArrayList<Payment> listP = new ArrayList<>();
     private Product product;
@@ -31,6 +34,10 @@ public class InvoiceAccAdapt extends RecyclerView.Adapter<InvoiceAccAdapt.CardVi
     public InvoiceAccAdapt(ArrayList<Payment> list){
         this.listP = list;
     }
+
+    /**
+     * mengambil informasi cardview dari xml khusus untuk invoice adaptor
+     */
     @NonNull
     @Override
     public InvoiceAccAdapt.CardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +45,11 @@ public class InvoiceAccAdapt extends RecyclerView.Adapter<InvoiceAccAdapt.CardVi
         return new CardViewHolder(view);
     }
 
+    /**
+     * merupakan function untuk inisialisasi model pada cardview
+     * @param holder merupakan parameter yang digunakan
+     * @param position posisi untuk menampilkan cardview lainnya
+     */
     @Override
     public void onBindViewHolder(@NonNull InvoiceAccAdapt.CardViewHolder holder, int position) {
         Payment payment = listP.get(position);
@@ -49,11 +61,18 @@ public class InvoiceAccAdapt extends RecyclerView.Adapter<InvoiceAccAdapt.CardVi
         holder.tvAddress.setText(payment.shipment.address);
     }
 
+    /**
+     * mengambil data list dari item
+     * @return size dari list
+     */
     @Override
     public int getItemCount() {
         return listP.size();
     }
 
+    /**
+     * digunakan untuk inisialisasi cardview holder
+     */
     public class CardViewHolder extends RecyclerView.ViewHolder {
         TextView tvNameProduct, tvStatus, tvDate, tvAddress, tvPrice, tvIdOrder;
         public CardViewHolder(@NonNull View itemView) {
@@ -67,6 +86,11 @@ public class InvoiceAccAdapt extends RecyclerView.Adapter<InvoiceAccAdapt.CardVi
         }
     }
 
+        /**
+         * function untuk membuat data payment dan setText
+          * @param holder untuk membuat data yang telah di inisialisasi
+         * @param payment paramteer yang diambil dari model Payment
+         */
     public void getProductData (InvoiceAccAdapt.CardViewHolder holder, Payment payment){
         Response.Listener<String> ListenerProduct = new Response.Listener<String>() {
             @Override

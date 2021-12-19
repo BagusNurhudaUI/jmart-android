@@ -7,6 +7,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * merupakan request yang digunakan untuk menampilkan index halaman dan jumlah product dalam satu halaman
+ */
 public class RequestFactory
 {
     private static final String URL_FORMAT_ID = "http://10.0.2.2:8084/%s/%d";

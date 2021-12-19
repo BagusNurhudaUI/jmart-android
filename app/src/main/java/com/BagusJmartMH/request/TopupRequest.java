@@ -7,6 +7,9 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * merupakan request yang digunakan untuk melakukan top up balance
+ */
 public class TopupRequest extends StringRequest {
     private static final String URL = "http://10.0.2.2:8084/account/%d/topUp";
     private final Map<String, String> params;

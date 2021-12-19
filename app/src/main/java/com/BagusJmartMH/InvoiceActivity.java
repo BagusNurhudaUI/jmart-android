@@ -25,6 +25,9 @@ import org.json.JSONException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * class untuk menjalankan invoice applikasi
+ */
 public class InvoiceActivity extends AppCompatActivity {
 
     private TabLayout tlInvoice;
@@ -35,6 +38,10 @@ public class InvoiceActivity extends AppCompatActivity {
     private Account account = LoginActivity.getLoggedAccount();
 
 
+    /**
+     * metod on create untuk menjalankan activity dan xml
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +52,9 @@ public class InvoiceActivity extends AppCompatActivity {
         rvAccount = findViewById(R.id.rv_account);
         rvStore = findViewById(R.id.rv_store);
 
-
+        /**
+         * listener untuk mengganti tab layout didalam invoice activity
+         */
         tlInvoice.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -82,6 +91,9 @@ public class InvoiceActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * digunakan untuk mengambil informasi dari account json dan menampilkan didalam
+     */
     private void getAccountPaymentList(){
         Response.Listener<String> listener = new Response.Listener<String>() {      //listener
 
@@ -114,6 +126,10 @@ public class InvoiceActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(InvoiceActivity.this);
         queue.add(InvoiceRequest);
     }
+
+    /**
+     * digunakan untuk mendapatkan data payment list
+     */
     private void getStorePaymentList(){
         Response.Listener<String> listener = new Response.Listener<String>() {
             @Override
